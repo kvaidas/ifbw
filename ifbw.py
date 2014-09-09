@@ -107,6 +107,7 @@ def print_rates():
 # ctrl+c handler
 #
 def sigint_handler(signum, frame):
+    print
     exit(0)
 
 #
