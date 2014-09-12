@@ -65,8 +65,20 @@ def gather_interface_data():
     return interfaces
 
 #
-# Function for making the output user-friendly
-#def data_friendly?
+# Function for making larger numbers (of data) more human-readable
+#
+def data_human(data):
+    data = float(data)
+    order = 0 # of magnitude - index for the array below
+    units = ['B', 'kB', 'MB', 'GB']
+    while True:
+        if data > 1024:
+            data /= 1024
+            order += 1
+        else:
+            break
+    
+    return str('{:>5.1f}').format(data) + ' ' + units[order]
 
 #
 # Function that calculates the rates and prints them
@@ -94,12 +106,10 @@ def print_rates():
         packets_sent_rate     = int( packets_sent     / float(arguments.interval) )
         # Print the result
         print(
-            '{:>4s}: Download: {:>5.1f} {}, Upload: {:>5.1f} {}'.format(
+            '{:>4s}: Download: {}/s, Upload: {}/s'.format(
                 interface,
-                bytes_received_rate,
-                'B/s',
-                bytes_sent_rate,
-                'B/s'
+                data_human(bytes_received_rate),
+                data_human(bytes_sent_rate),
              )
         )
 
