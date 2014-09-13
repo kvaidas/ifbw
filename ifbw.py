@@ -78,7 +78,7 @@ def data_human(data):
         else:
             break
     
-    return str('{:>5.1f}').format(data) + ' ' + units[order]
+    return  { 'amount':data, 'units':units[order] }
 
 #
 # Function that calculates the rates and prints them
@@ -106,10 +106,12 @@ def print_rates():
         packets_sent_rate     = int( packets_sent     / float(arguments.interval) )
         # Print the result
         print(
-            '{:>4s}: Download: {}/s, Upload: {}/s'.format(
+            '{:>4s}: Download: {:>5.1f} {:<4s}, Upload: {:>5.1f} {}'.format(
                 interface,
-                data_human(bytes_received_rate),
-                data_human(bytes_sent_rate),
+                data_human(bytes_received_rate)['amount'],
+                data_human(bytes_received_rate)['units'] + '/s',
+                data_human(bytes_sent_rate)['amount'],
+                data_human(bytes_sent_rate)['units'] + '/s'
              )
         )
 
