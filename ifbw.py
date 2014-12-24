@@ -42,8 +42,9 @@ if arguments.debug: print(arguments)
 #
 def gather_interface_data():
     datafile = open("/proc/net/dev","r")
-    # Skip the headers (204 bytes/characters?)
-    datafile.read(204)
+    # Skip the headers
+    datafile.readline()
+    datafile.readline()
 
     interfaces = {}
     for line in datafile:
