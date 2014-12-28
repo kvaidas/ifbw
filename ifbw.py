@@ -59,8 +59,8 @@ def gather_interface_data():
         interfaces[interface] = {}
         interfaces[interface]['bytes_received']   = int(interface_info[ 1])
         interfaces[interface]['packets_received'] = int(interface_info[ 2])
-        interfaces[interface]['bytes_sent']       = int(interface_info[10])
-        interfaces[interface]['packets_sent']     = int(interface_info[11])
+        interfaces[interface]['bytes_sent']       = int(interface_info[ 9])
+        interfaces[interface]['packets_sent']     = int(interface_info[10])
 
     datafile.close()
     return interfaces
