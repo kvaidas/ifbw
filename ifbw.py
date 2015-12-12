@@ -48,8 +48,8 @@ def gather_interface_data():
 
     interfaces = {}
     for line in datafile:
-        interface_info = line.split()
-        interface = interface_info[0].split(":")[0]
+        interface_info = line.replace(':', ' ').split()
+        interface = interface_info[0]
         # check if reading info about an interface we're interested in
         if \
             interface not in arguments.interface_list and \
