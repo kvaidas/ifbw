@@ -78,7 +78,7 @@ def data_human(data):
             order += 1
         else:
             break
-    
+
     return  { 'amount':data, 'units':units[order] }
 
 #
@@ -107,7 +107,7 @@ def print_rates():
         packets_sent_rate     = int( packets_sent     / float(arguments.interval) )
         # Print the result
         print(
-            '{:>4s}: Download: {:>5.1f} {:<4s}, Upload: {:>5.1f} {}'.format(
+            '{0:>4s}: Download: {1:>5.1f} {2:<4s}, Upload: {3:>5.1f} {4:s}'.format(
                 interface,
                 data_human(bytes_received_rate)['amount'],
                 data_human(bytes_received_rate)['units'] + '/s',
